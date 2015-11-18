@@ -4,8 +4,10 @@ class TerraformProviderExecute < Formula
   url "https://github.com/Samsung-AG/terraform-provider-execute/releases/download/v0.0.2/terraform-provider-execute_darwin_amd64.tar.gz"
   version "0.0.2"
   sha256 "b38919d9c2e139dee315855a77d01e5e42452539eb2fc89c47bbe21c1d9c5133"
+  depends_on 'terraform'
 
   def install
     bin.install "terraform-provider-execute"
+    system "ln -s #{File.join(bin, name)} #{File.join(HOMEBREW_PREFIX, 'opt', 'terraform', 'bin', name)}"
   end
 end
